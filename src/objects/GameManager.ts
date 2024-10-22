@@ -56,6 +56,8 @@ class GameManager {
 
   public handleLose(): void {
     // Do something
+    console.log("Game over!");
+    this.switchScene("GameScene", "LoseScene");
   }
 
   setupInput(scene: Phaser.Scene, player: Player): void {

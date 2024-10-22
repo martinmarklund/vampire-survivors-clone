@@ -34,6 +34,33 @@ class AnimationUtil {
       repeat: -1,
     });
   }
+
+  static createEnemyAnimations(scene: Phaser.Scene): void {
+    scene.anims.create({
+      key: "enemy-walk",
+      frames: scene.anims.generateFrameNumbers("enemy", { start: 13, end: 22 }),
+      frameRate: 10,
+      repeat: -1,
+    });
+    scene.anims.create({
+      key: "enemy-walk-up",
+      frames: scene.anims.generateFrameNumbers("enemy", { start: 13, end: 22 }),
+      frameRate: 10,
+      repeat: -1,
+    });
+    scene.anims.create({
+      key: "enemy-walk-down",
+      frames: scene.anims.generateFrameNumbers("enemy", { start: 13, end: 22 }),
+      frameRate: 10,
+      repeat: -1,
+    });
+    scene.anims.create({
+      key: "enemy-idle",
+      frames: scene.anims.generateFrameNumbers("enemy", { start: 13, end: 14 }),
+      frameRate: 10,
+      repeat: -1,
+    });
+  }
 }
 
 export default AnimationUtil;

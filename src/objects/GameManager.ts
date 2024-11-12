@@ -5,6 +5,7 @@ import Player from "./Player";
 
 // Utils
 import InputUtil from "../utils/InputUtil";
+import Score from "./Score";
 
 type SceneConfig = [string, Phaser.Scene];
 
@@ -55,13 +56,15 @@ class GameManager {
   }
 
   public handleLose(): void {
-    // Do something
-    console.log("Game over!");
     this.switchScene("GameScene", "LoseScene");
   }
 
   setupInput(scene: Phaser.Scene, player: Player): void {
     InputUtil.setupPlayerInput(scene, player);
+  }
+
+  public updateScore(score: Score, newScore: number): void {
+    score.updateScore(newScore);
   }
 }
 

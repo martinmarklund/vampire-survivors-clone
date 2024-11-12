@@ -5,6 +5,7 @@ import GameManager from "../objects/GameManager";
 import Player from "../objects/Player";
 import Enemy from "../objects/Enemy";
 import EnemySpawner from "../objects/EnemySpawner";
+import Score from "../objects/Score";
 
 // Utils
 import AnimationUtil from "../utils/AnimationUtil";
@@ -15,6 +16,8 @@ class GameScene extends Phaser.Scene {
 
   private gameManager!: GameManager;
   private enemySpawner!: EnemySpawner;
+
+  private score!: Score;
 
   private map!: Phaser.Tilemaps.Tilemap;
   private tileset!: Phaser.Tilemaps.Tileset;
@@ -71,7 +74,19 @@ class GameScene extends Phaser.Scene {
       loop: true,
     });
 
+    this.score = new Score(this);
+    this.time.addEvent({
+      delay: 1000,
+      callback: this.tickScore,
+      callbackScope: this,
+      loop: true,
+    });
     this.gameManager.setupInput(this, this.player);
+  }
+
+  tickScore(): void {
+    const currentScore = this.score["score"];
+    this.gameManager.updateScore(this.score, currentScore + 1);
   }
 
   update(): void {
